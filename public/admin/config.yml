@@ -1,0 +1,21 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+locale: "hu"
+
+collections:
+  - name: "blog"
+    label: "Blog bejegyzések"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Cím", name: "title", widget: "string" }
+      - { label: "Leírás", name: "description", widget: "string" }
+      - { label: "Dátum", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Kép", name: "image", widget: "image", required: false }
+      - { label: "Szöveg", name: "body", widget: "markdown" }

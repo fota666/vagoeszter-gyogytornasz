@@ -1,17 +1,97 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import BlogCard from '../components/BlogCard.astro';
+import TestimonialSection from '../components/TestimonialSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import LeadMagnet from '../components/LeadMagnet.astro';
+import { getCollection } from 'astro:content';
 
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+const recentPosts = allPosts.slice(0, 3);
+const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Vágó Eszter - Gyógytornász">
+  <HeroSection />
+
+  <!-- Bemutatkozás -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="reveal">
+          <span class="text-teal-600 font-semibold text-sm tracking-widest uppercase mb-3 block text-center">Rólam</span>
+          <h2 class="font-heading text-4xl sm:text-5xl font-bold text-gray-900 text-center">Bemutatkozás</h2>
+          <p class="mt-6 text-gray-600 leading-relaxed text-lg text-center">
+            Vágó Eszter vagyok, diplomás gyógytornász, McKenzie-terapeuta. Hiszek abban, hogy a legjobb kezelés az, amit megtanulsz magadnak elvégezni.
+          </p>
+          <p class="mt-4 text-gray-500 leading-relaxed text-center">
+            A McKenzie-módszer (MDT) lényege, hogy a páciens aktív résztvevője legyen saját gyógyulásának. Nem pusztán kezellek — megtanítalak rá, hogyan kezeld magad. Célzott gyakorlatokkal és önkezelési stratégiákkal tartós eredményeket érünk el együtt.
+          </p>
+          <div class="text-center mt-8">
+            <a href="/rolam" class="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors">
+              Tovább a bemutatkozáshoz
+              <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <ServicesSection />
+
+  <LeadMagnet />
+
+  <!-- Blog előnézet -->
+  {recentPosts.length > 0 && (
+    <section class="py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="reveal inline-block text-teal-600 font-semibold text-sm tracking-widest uppercase mb-3">Blog</span>
+          <h2 class="reveal font-heading text-4xl sm:text-5xl font-bold text-gray-900 stagger-1">Hasznos cikkek</h2>
+          <p class="reveal mt-5 text-gray-500 text-lg stagger-2">Tippek és tanácsok az egészséges mozgásról</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {recentPosts.map((post, i) => (
+            <div class={`reveal stagger-${i + 1}`}>
+              <BlogCard
+                title={post.data.title}
+                description={post.data.description}
+                date={post.data.date}
+                slug={post.id}
+                image={post.data.image}
+              />
+            </div>
+          ))}
+        </div>
+        <div class="reveal text-center mt-10">
+          <a href="/blog" class="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors">
+            Összes bejegyzés
+            <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <TestimonialSection />
+
+  <!-- CTA banner -->
+  <section class="py-24 bg-navy-900 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <div class="absolute top-20 right-10 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-10 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="reveal font-heading text-3xl sm:text-5xl font-bold text-white">Készen áll a változásra?</h2>
+      <p class="reveal stagger-1 mt-6 text-gray-400 text-lg">Foglalja le első konzultációját a McKenzie Gyógytorna Rendelő központi rendszerén keresztül.</p>
+      <a href={`${clinicUrl}/kapcsolat#idopontfoglalas`} target="_blank" rel="noopener" class="reveal stagger-2 inline-block mt-8 bg-gold-500 hover:bg-gold-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-gold-500/25 hover:-translate-y-0.5 transition-all">
+        Időpontfoglalás
+      </a>
+    </div>
+  </section>
+
+  <ContactSection />
+</BaseLayout>

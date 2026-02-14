@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
+---
+
+<BaseLayout title="Rólam - Vágó Eszter Gyógytornász" description="Ismerje meg Vágó Esztert, diplomás gyógytornászt.">
+  <section class="pt-32 pb-24 bg-cream">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="reveal inline-block text-teal-600 font-semibold text-sm tracking-widest uppercase mb-3">Rólam</span>
+        <h1 class="reveal font-heading text-5xl sm:text-6xl font-bold text-gray-900 stagger-1">Vágó Eszter</h1>
+        <p class="reveal stagger-2 mt-4 text-xl text-gray-500">Diplomás gyógytornász, McKenzie-terapeuta</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="md:col-span-1 reveal-left">
+          <div class="aspect-[3/4] rounded-2xl overflow-hidden sticky top-28 shadow-xl shadow-gray-200/50 border border-gray-100">
+            <img src="/images/eszter.jpg" alt="Vágó Eszter gyógytornász" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 space-y-8 reveal-right">
+          <div>
+            <h2 class="font-heading text-2xl font-semibold text-gray-900 mb-4">Bemutatkozás</h2>
+            <p class="text-gray-600 leading-relaxed text-lg">
+              Vágó Eszter vagyok, diplomás gyógytornász és McKenzie-terapeuta (MDT). Hiszek abban, hogy a legjobb kezelés az, amit megtanulsz magadnak elvégezni — halászni tanítok, nem halat adok.
+            </p>
+            <p class="text-gray-500 leading-relaxed mt-4">
+              A McKenzie-módszer lényege, hogy a páciens aktív résztvevője legyen a saját gyógyulásának. Nem pusztán kezellek — megtanítalak rá, hogyan kezeld magad. Célzott, egyszerű gyakorlatokkal és önkezelési stratégiákkal tartós eredményeket érünk el, általában kevesebb alkalomból, mint a hagyományos terápiával.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="font-heading text-2xl font-semibold text-gray-900 mb-4">Képzettségek</h2>
+            <div class="space-y-3">
+              {['Gyógytornász diploma', 'McKenzie-terapeuta (MDT) képesítés', 'Manuálterápiás képzés', 'Mozgásszervi rehabilitáció specializáció'].map(item => (
+                <div class="flex items-center gap-3 bg-white rounded-xl p-4 border border-gray-100 hover:shadow-md transition-all duration-300">
+                  <div class="w-8 h-8 bg-teal-50 rounded-lg flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span class="text-gray-700 font-medium">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 class="font-heading text-2xl font-semibold text-gray-900 mb-4">Szakterületek</h2>
+            <div class="flex flex-wrap gap-2">
+              {['McKenzie-módszer (MDT)', 'Mozgásszervi rehabilitáció', 'Önkezelés tanítás', 'Fájdalomcsillapítás', 'Gerincterápia', 'Prevenciós torna'].map(tag => (
+                <span class="bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2 rounded-full border border-teal-100">{tag}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 bg-white rounded-xl p-5 border border-gray-100">
+            <div class="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center shrink-0">
+              <span class="w-2 h-2 bg-teal-500 rounded-full"></span>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Munkahelyem</p>
+              <a href={clinicUrl} target="_blank" rel="noopener" class="text-teal-600 font-semibold hover:text-teal-700 transition-colors">McKenzie Gyógytorna Rendelő &rarr;</a>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a href={`${clinicUrl}/kapcsolat#idopontfoglalas`} target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all hover:shadow-xl hover:shadow-gold-500/25 hover:-translate-y-0.5">
+              Foglaljon időpontot
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

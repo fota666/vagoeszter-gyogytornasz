@@ -1,0 +1,45 @@
+---
+const year = new Date().getFullYear();
+const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
+---
+
+<footer class="bg-navy-900 text-gray-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <h3 class="font-heading text-2xl font-bold text-white mb-2">Vágó Eszter</h3>
+        <p class="text-gray-400 text-sm">Gyógytornász, McKenzie-terapeuta</p>
+        <a href={clinicUrl} target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-3 px-3 py-1.5 bg-teal-900/30 border border-teal-700/30 rounded-full text-teal-400 text-xs font-medium hover:bg-teal-900/50 transition-colors">
+          <span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span>
+          McKenzie Gyógytorna Rendelő munkatársa
+        </a>
+      </div>
+      <div>
+        <h4 class="font-semibold text-white mb-4">Oldalak</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/" class="hover:text-teal-400 transition-colors">Főoldal</a></li>
+          <li><a href="/rolam" class="hover:text-teal-400 transition-colors">Rólam</a></li>
+          <li><a href="/blog" class="hover:text-teal-400 transition-colors">Blog</a></li>
+          <li><a href="/kapcsolat" class="hover:text-teal-400 transition-colors">Kapcsolat</a></li>
+          <li class="pt-2 border-t border-gray-800">
+            <a href={clinicUrl} target="_blank" rel="noopener" class="hover:text-teal-400 transition-colors text-gray-500">
+              McKenzie Rendelő &rarr;
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-white mb-4">Időpontfoglalás</h4>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          Az időpontfoglalás a McKenzie Gyógytorna Rendelő központi rendszerén keresztül történik.
+        </p>
+        <a href={`${clinicUrl}/kapcsolat#idopontfoglalas`} target="_blank" rel="noopener" class="inline-flex items-center mt-4 px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-white text-sm font-semibold rounded-full transition-all hover:shadow-lg hover:shadow-gold-500/25">
+          Foglaljon időpontot
+        </a>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-600">
+      &copy; {year} Vágó Eszter Gyógytornász. Minden jog fenntartva.
+    </div>
+  </div>
+</footer>
