@@ -1,19 +1,20 @@
 ---
+const base = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
-const isHomePage = currentPath === '/';
+const isHomePage = currentPath === base || currentPath === base.replace(/\/$/, '');
 const links = [
-  { href: '/', label: 'Főoldal' },
-  { href: '/rolam', label: 'Rólam' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/kapcsolat', label: 'Kapcsolat' },
+  { href: base, label: 'Főoldal' },
+  { href: `${base}rolam`, label: 'Rólam' },
+  { href: `${base}blog`, label: 'Blog' },
+  { href: `${base}kapcsolat`, label: 'Kapcsolat' },
 ];
-const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
+const clinicUrl = 'https://fota666.github.io/mckenzie-rendelo';
 ---
 
 <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" data-page={isHomePage ? 'home' : 'inner'}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
-      <a href="/" class="flex items-center gap-3 group">
+      <a href={base} class="flex items-center gap-3 group">
         <div class="hidden sm:block">
           <span class="text-lg font-heading font-bold nav-primary transition-colors duration-300">Vágó Eszter</span>
           <span class="block text-xs font-medium tracking-wider uppercase nav-accent transition-colors duration-300">Gyógytornász</span>

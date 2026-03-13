@@ -8,6 +8,7 @@ import ContactSection from '../components/ContactSection.astro';
 import LeadMagnet from '../components/LeadMagnet.astro';
 import { getCollection } from 'astro:content';
 
+const base = import.meta.env.BASE_URL;
 const allPosts = (await getCollection('blog'))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -32,7 +33,7 @@ const recentPosts = allPosts.slice(0, 3);
             A McKenzie-módszer (MDT) lényege, hogy a páciens aktív résztvevője legyen saját gyógyulásának. Nem pusztán kezellek — megtanítalak rá, hogyan kezeld magad. Célzott gyakorlatokkal és önkezelési stratégiákkal tartós eredményeket érünk el együtt.
           </p>
           <div class="mt-8">
-            <a href="/rolam" class="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors">
+            <a href={`${base}rolam`} class="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors">
               Tovább a bemutatkozáshoz
               <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
             </a>
@@ -70,7 +71,7 @@ const recentPosts = allPosts.slice(0, 3);
           ))}
         </div>
         <div class="reveal text-center mt-10">
-          <a href="/blog" class="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors">
+          <a href={`${base}blog`} class="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors">
             Összes bejegyzés
             <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
           </a>

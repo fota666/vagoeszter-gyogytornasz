@@ -1,3 +1,7 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
 <section class="relative min-h-[85vh] flex items-center overflow-hidden">
   <div class="absolute inset-0 bg-gradient-to-b from-navy-950 via-navy-900 to-navy-800"></div>
 
@@ -37,7 +41,7 @@
             Időpontfoglalás
             <svg class="ml-2.5 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="/rolam" class="inline-flex items-center justify-center px-9 py-4 text-white/60 font-medium border border-white/10 rounded-full transition-all duration-500 hover:bg-white/[0.05] hover:border-white/15 hover:text-white/80">
+          <a href={`${base}rolam`} class="inline-flex items-center justify-center px-9 py-4 text-white/60 font-medium border border-white/10 rounded-full transition-all duration-500 hover:bg-white/[0.05] hover:border-white/15 hover:text-white/80">
             Rólam
             <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
           </a>
@@ -71,7 +75,7 @@
       <!-- Photo -->
       <div class="reveal stagger-2 relative hidden lg:block">
         <div class="aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-900/30 border border-white/[0.05]">
-          <img src="/images/eszter.jpg" alt="Vágó Eszter gyógytornász" class="w-full h-full object-cover" />
+          <img src={`${base}images/eszter.jpg`} alt="Vágó Eszter gyógytornász" class="w-full h-full object-cover" />
         </div>
         <!-- Floating badge -->
         <div class="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-lg shadow-navy-900/10 p-5 border border-warm-200/50">

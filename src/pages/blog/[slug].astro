@@ -17,19 +17,20 @@ const formattedDate = post.data.date.toLocaleDateString('hu-HU', {
   month: 'long',
   day: 'numeric',
 });
-const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
+const base = import.meta.env.BASE_URL;
+const clinicUrl = 'https://fota666.github.io/mckenzie-rendelo';
 ---
 
 <BaseLayout title={`${post.data.title} - Vágó Eszter`} description={post.data.description}>
   <article class="pt-32 pb-24">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <a href="/blog" class="text-teal-600 hover:text-teal-700 text-sm font-medium transition-colors">&larr; Vissza a bloghoz</a>
+      <a href={`${base}blog`} class="text-teal-600 hover:text-teal-700 text-sm font-medium transition-colors">&larr; Vissza a bloghoz</a>
 
       <h1 class="font-heading text-3xl sm:text-4xl font-semibold text-navy-900 mt-6">{post.data.title}</h1>
       <time class="block mt-3 text-sm text-navy-700/40">{formattedDate}</time>
 
       {post.data.image && (
-        <img src={post.data.image} alt={post.data.title} class="w-full max-w-md mx-auto rounded-2xl mt-8 aspect-square object-cover border border-warm-200/50" />
+        <img src={`${base}${post.data.image.replace(/^\//, '')}`} alt={post.data.title} class="w-full max-w-md mx-auto rounded-2xl mt-8 aspect-square object-cover border border-warm-200/50" />
       )}
 
       <div class="mt-8 prose max-w-none
