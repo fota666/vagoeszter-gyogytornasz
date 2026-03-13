@@ -10,35 +10,25 @@ const links = [
 const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
 ---
 
-<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" data-dark-hero={isHomePage ? 'true' : 'false'}>
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" data-page={isHomePage ? 'home' : 'inner'}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
-      <!-- Logo -->
       <a href="/" class="flex items-center gap-3 group">
         <div class="hidden sm:block">
-          <span class="text-lg font-heading font-bold text-white navbar-scrolled:text-gray-900 transition-colors">Vágó Eszter</span>
-          <span class="block text-xs text-teal-300 navbar-scrolled:text-teal-600 font-medium tracking-wider uppercase transition-colors">Gyógytornász</span>
+          <span class="text-lg font-heading font-bold nav-primary transition-colors duration-300">Vágó Eszter</span>
+          <span class="block text-xs font-medium tracking-wider uppercase nav-accent transition-colors duration-300">Gyógytornász</span>
         </div>
-        <span class="sm:hidden text-lg font-heading font-bold text-white navbar-scrolled:text-gray-900 transition-colors">Vágó Eszter</span>
+        <span class="sm:hidden text-lg font-heading font-bold nav-primary transition-colors duration-300">Vágó Eszter</span>
       </a>
 
-      <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-1">
         {links.map(link => (
-          <a
-            href={link.href}
-            class:list={[
-              'px-3 py-2 text-sm font-medium rounded-lg transition-colors',
-              currentPath === link.href
-                ? 'text-white navbar-scrolled:text-teal-700 bg-white/10 navbar-scrolled:bg-teal-50'
-                : 'text-white/80 navbar-scrolled:text-gray-600 hover:text-white navbar-scrolled:hover:text-teal-700 hover:bg-white/10 navbar-scrolled:hover:bg-teal-50',
-            ]}
-          >
+          <a href={link.href} class="px-3 py-2 text-sm font-medium nav-link transition-colors duration-300 rounded-lg">
             {link.label}
           </a>
         ))}
-        <span class="w-px h-5 bg-white/20 navbar-scrolled:bg-gray-200 mx-1 transition-colors"></span>
-        <a href={clinicUrl} target="_blank" rel="noopener" class="px-3 py-2 text-sm font-medium text-white/50 navbar-scrolled:text-gray-400 hover:text-white navbar-scrolled:hover:text-teal-700 hover:bg-white/10 navbar-scrolled:hover:bg-teal-50 rounded-lg transition-colors">
+        <span class="w-px h-5 bg-white/20 mx-1 nav-divider transition-colors duration-300"></span>
+        <a href={clinicUrl} target="_blank" rel="noopener" class="px-3 py-2 text-sm font-medium nav-muted transition-colors duration-300 rounded-lg hover:nav-link">
           McKenzie Rendelő
         </a>
         <a href={`${clinicUrl}/kapcsolat#idopontfoglalas`} target="_blank" rel="noopener" class="ml-2 px-5 py-2.5 bg-gold-500 hover:bg-gold-600 text-white text-sm font-semibold rounded-full transition-all hover:shadow-lg hover:shadow-gold-500/25 hover:-translate-y-0.5">
@@ -46,8 +36,7 @@ const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
         </a>
       </nav>
 
-      <!-- Mobile menu button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-white navbar-scrolled:text-gray-700" aria-label="Menü">
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg nav-link" aria-label="Menü">
         <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -58,24 +47,15 @@ const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
     </div>
   </div>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl border-t border-gray-100">
+  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl border-t border-warm-200">
     <div class="px-4 py-6 space-y-1">
       {links.map(link => (
-        <a
-          href={link.href}
-          class:list={[
-            'block px-4 py-3 rounded-xl font-medium transition-colors',
-            currentPath === link.href
-              ? 'text-teal-700 bg-teal-50'
-              : 'text-gray-700 hover:text-teal-700 hover:bg-teal-50',
-          ]}
-        >
+        <a href={link.href} class="block px-4 py-3 text-navy-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl font-medium transition-colors">
           {link.label}
         </a>
       ))}
-      <div class="border-t border-gray-100 pt-3 mt-3">
-        <a href={clinicUrl} target="_blank" rel="noopener" class="block px-4 py-3 text-gray-400 hover:text-teal-700 hover:bg-teal-50 rounded-xl font-medium transition-colors">
+      <div class="border-t border-warm-200 pt-3 mt-3">
+        <a href={clinicUrl} target="_blank" rel="noopener" class="block px-4 py-3 text-navy-700/40 hover:text-teal-700 hover:bg-teal-50 rounded-xl font-medium transition-colors">
           McKenzie Rendelő &rarr;
         </a>
       </div>
@@ -89,23 +69,19 @@ const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
 </header>
 
 <script>
-  // Scroll effect — matches clinic navbar behavior
   const navbar = document.getElementById('navbar');
-  const hasDarkHero = navbar?.dataset.darkHero === 'true';
+  const isHome = navbar?.dataset.page === 'home';
 
   const onScroll = () => {
-    if (!hasDarkHero || window.scrollY > 50) {
-      navbar?.classList.add('bg-white/95', 'backdrop-blur-lg', 'shadow-sm', 'scrolled');
-      navbar?.classList.remove('bg-transparent');
+    if (!isHome || window.scrollY > 50) {
+      navbar?.classList.add('is-solid');
     } else {
-      navbar?.classList.remove('bg-white/95', 'backdrop-blur-lg', 'shadow-sm', 'scrolled');
-      navbar?.classList.add('bg-transparent');
+      navbar?.classList.remove('is-solid');
     }
   };
   window.addEventListener('scroll', onScroll);
   onScroll();
 
-  // Mobile menu toggle
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const menuIcon = document.getElementById('menu-icon');
@@ -118,15 +94,35 @@ const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
 </script>
 
 <style>
-  /* Override text colors when scrolled — same pattern as clinic */
-  #navbar.scrolled .navbar-scrolled\:text-gray-900 { color: #111827; }
-  #navbar.scrolled .navbar-scrolled\:text-teal-600 { color: var(--color-teal-600); }
-  #navbar.scrolled .navbar-scrolled\:text-teal-700 { color: var(--color-teal-700); }
-  #navbar.scrolled .navbar-scrolled\:text-gray-600 { color: #4b5563; }
-  #navbar.scrolled .navbar-scrolled\:text-gray-400 { color: #9ca3af; }
-  #navbar.scrolled .navbar-scrolled\:text-gray-700 { color: #374151; }
-  #navbar.scrolled .navbar-scrolled\:bg-teal-50 { background-color: var(--color-teal-50); }
-  #navbar.scrolled .navbar-scrolled\:bg-gray-200 { background-color: #e5e7eb; }
-  #navbar.scrolled .navbar-scrolled\:hover\:text-teal-700:hover { color: var(--color-teal-700); }
-  #navbar.scrolled .navbar-scrolled\:hover\:bg-teal-50:hover { background-color: var(--color-teal-50); }
+  /* Home page at top: transparent, white text */
+  #navbar[data-page="home"]:not(.is-solid) .nav-primary { color: #fff; }
+  #navbar[data-page="home"]:not(.is-solid) .nav-accent { color: var(--color-teal-300); }
+  #navbar[data-page="home"]:not(.is-solid) .nav-link { color: rgba(255,255,255,0.7); }
+  #navbar[data-page="home"]:not(.is-solid) .nav-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+  #navbar[data-page="home"]:not(.is-solid) .nav-muted { color: rgba(255,255,255,0.4); }
+  #navbar[data-page="home"]:not(.is-solid) .nav-muted:hover { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.08); }
+  #navbar[data-page="home"]:not(.is-solid) .nav-divider { background: rgba(255,255,255,0.15); }
+
+  /* Solid state (scrolled or inner pages) */
+  #navbar.is-solid,
+  #navbar[data-page="inner"] {
+    background: rgba(247, 249, 247, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  #navbar.is-solid .nav-primary,
+  #navbar[data-page="inner"] .nav-primary { color: var(--color-navy-900); }
+  #navbar.is-solid .nav-accent,
+  #navbar[data-page="inner"] .nav-accent { color: var(--color-teal-600); }
+  #navbar.is-solid .nav-link,
+  #navbar[data-page="inner"] .nav-link { color: var(--color-navy-700); }
+  #navbar.is-solid .nav-link:hover,
+  #navbar[data-page="inner"] .nav-link:hover { color: var(--color-teal-700); background: var(--color-teal-50); }
+  #navbar.is-solid .nav-muted,
+  #navbar[data-page="inner"] .nav-muted { color: #9ca3af; }
+  #navbar.is-solid .nav-muted:hover,
+  #navbar[data-page="inner"] .nav-muted:hover { color: var(--color-teal-700); background: var(--color-teal-50); }
+  #navbar.is-solid .nav-divider,
+  #navbar[data-page="inner"] .nav-divider { background: var(--color-warm-200); }
 </style>

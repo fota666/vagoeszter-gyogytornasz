@@ -1,47 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  /* Unified palette — matches McKenzie Rendelő */
-  --color-teal-700: #004d27;
-  --color-teal-600: #006332;
-  --color-teal-500: #00733a;
-  --color-teal-400: #1a9c5a;
-  --color-teal-300: #4dbf82;
-  --color-teal-200: #93dbb3;
-  --color-teal-100: #cceedd;
-  --color-teal-50: #eaf7f0;
+  /* Palette B: Autoritatív Gyógyítás — matches McKenzie Rendelő */
 
-  /* Sage aliased to teal for backwards compat */
-  --color-sage-50: #eaf7f0;
-  --color-sage-100: #cceedd;
-  --color-sage-200: #93dbb3;
-  --color-sage-300: #4dbf82;
-  --color-sage-400: #1a9c5a;
-  --color-sage-500: #00733a;
-  --color-sage-600: #006332;
-  --color-sage-700: #004d27;
+  /* Deep Forest Green (primary dark tones) */
+  --color-navy-950: #061710;
+  --color-navy-900: #0A2118;
+  --color-navy-800: #0E3022;
+  --color-navy-700: #16422F;
+  --color-navy-600: #1F5940;
 
-  --color-gold-600: #a67c2e;
-  --color-gold-500: #c49b3c;
-  --color-gold-400: #d4b05c;
-  --color-gold-300: #e4c97e;
-  --color-gold-100: #faf3e0;
+  /* Emerald Green (accent green) */
+  --color-teal-700: #1A6B42;
+  --color-teal-600: #228B54;
+  --color-teal-500: #2DA566;
+  --color-teal-400: #54BF82;
+  --color-teal-300: #7DD4A0;
+  --color-teal-200: #ADE5C2;
+  --color-teal-100: #D5F2DF;
+  --color-teal-50: #EBF9F0;
 
-  --color-warm-50: #faf3e0;
-  --color-warm-100: #faf3e0;
-  --color-warm-200: #e4c97e;
-  --color-warm-300: #d4b05c;
-  --color-warm-400: #c49b3c;
+  /* Copper / Bronze (premium accent) */
+  --color-gold-600: #9A5F2E;
+  --color-gold-500: #B8733A;
+  --color-gold-400: #CC8E56;
+  --color-gold-300: #DDAA7A;
+  --color-gold-200: #EECBA8;
+  --color-gold-100: #F8E6D0;
 
-  --color-navy-950: #0a1628;
-  --color-navy-900: #0f2340;
-  --color-navy-800: #162e50;
+  /* Light backgrounds */
+  --color-warm-50: #F7F9F7;
+  --color-warm-100: #EFF3EF;
+  --color-warm-200: #DCE4DC;
 
-  --color-cream: #fafaf8;
-  --color-cream-dark: #f5f4f0;
+  --color-cream: #F7F9F7;
+  --color-cream-dark: #EFF3EF;
 
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
 
   --animate-fade-up: fade-up 0.7s ease-out both;
   --animate-fade-in: fade-in 0.6s ease-out both;
@@ -51,8 +48,6 @@
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-delayed: float 6s ease-in-out 3s infinite;
   --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
-  --animate-gradient: gradient-shift 8s ease infinite;
-  --animate-blob: blob 7s infinite;
 }
 
 @keyframes fade-up {
@@ -90,78 +85,90 @@
   50% { opacity: 1; }
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
 }
 
-@keyframes blob {
-  0% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0px, 0px) scale(1); }
+body {
+  color: #1A2E24;
+  background: var(--color-warm-50);
 }
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-    font-family: var(--font-body);
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-  }
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  /* Scroll reveal - elements start hidden */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
 
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
 
-  .reveal-left {
-    opacity: 0;
-    transform: translateX(-60px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
 
-  .reveal-left.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
 
-  .reveal-right {
-    opacity: 0;
-    transform: translateX(60px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-teal-600), var(--color-teal-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-  .reveal-right.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .reveal-scale {
-    opacity: 0;
-    transform: scale(0.85);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-scale.visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .stagger-1 { transition-delay: 0.1s; }
-  .stagger-2 { transition-delay: 0.2s; }
-  .stagger-3 { transition-delay: 0.3s; }
-  .stagger-4 { transition-delay: 0.4s; }
-  .stagger-5 { transition-delay: 0.5s; }
-  .stagger-6 { transition-delay: 0.6s; }
+/* Gold accent line */
+.gold-line::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold-500), var(--color-gold-300));
+  margin-top: 1rem;
+}
+.gold-line-center::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold-500), var(--color-gold-300));
+  margin: 1rem auto 0;
 }

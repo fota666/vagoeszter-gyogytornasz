@@ -27,31 +27,34 @@ const services = [
 ];
 ---
 
-<section class="py-24 bg-white">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <span class="reveal inline-block text-teal-600 font-semibold text-sm tracking-widest uppercase mb-3">Hogyan segítek</span>
-      <h2 class="reveal font-heading text-4xl sm:text-5xl font-bold text-gray-900 stagger-1">A McKenzie-módszer lényege</h2>
-      <p class="reveal mt-5 text-gray-500 max-w-2xl mx-auto text-lg stagger-2">
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-xl mb-16 lg:mb-20">
+      <span class="reveal text-gold-500 text-xs tracking-[0.2em] uppercase font-semibold">Hogyan segítek</span>
+      <h2 class="reveal stagger-1 font-heading text-4xl sm:text-5xl font-semibold text-navy-900 mt-4 leading-tight">
+        A McKenzie-módszer lényege
+      </h2>
+      <div class="w-10 h-[2px] bg-gradient-to-r from-gold-500 to-gold-300 mt-5"></div>
+      <p class="reveal stagger-2 mt-5 text-navy-700/50 text-lg leading-relaxed">
         Nem kezellek hagyományos értelemben — megtanítalak rá, hogyan kezeld magad. Kevesebb alkalom, tartósabb eredmény.
       </p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       {services.map((service, i) => (
-        <div class={`reveal stagger-${i + 1} group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-500 hover:-translate-y-1 cursor-default flex flex-row`}>
+        <div class={`reveal stagger-${i + 1} group bg-warm-50 rounded-2xl overflow-hidden border border-warm-200/60 hover:border-teal-300/50 hover:shadow-lg hover:shadow-teal-600/[0.04] transition-all duration-500 flex flex-row`}>
           {service.image && (
-            <div class="w-36 sm:w-44 shrink-0 aspect-square bg-teal-50 overflow-hidden">
-              <img src={service.image} alt={service.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="w-36 sm:w-44 shrink-0 aspect-square overflow-hidden">
+              <img src={service.image} alt={service.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
           )}
           <div class="p-6">
-            <div class="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center mb-3">
+            <div class="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center mb-3 border border-teal-200/50">
               <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <Fragment set:html={service.icon} />
               </svg>
             </div>
-            <h3 class="font-heading text-lg font-semibold text-gray-900 mb-2">{service.title}</h3>
-            <p class="text-gray-500 leading-relaxed text-sm">{service.description}</p>
+            <h3 class="font-heading text-xl font-semibold text-navy-900 group-hover:text-teal-700 transition-colors duration-300">{service.title}</h3>
+            <p class="mt-2 text-navy-700/50 leading-relaxed text-sm">{service.description}</p>
           </div>
         </div>
       ))}
