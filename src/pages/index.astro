@@ -8,30 +8,30 @@ import ContactSection from '../components/ContactSection.astro';
 import LeadMagnet from '../components/LeadMagnet.astro';
 import { getCollection } from 'astro:content';
 
-const allPosts = (await getCollection('blog')).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+const allPosts = (await getCollection('blog'))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const recentPosts = allPosts.slice(0, 3);
-const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
 ---
 
 <BaseLayout title="Vágó Eszter - Gyógytornász">
   <HeroSection />
 
   <!-- Bemutatkozás -->
-  <section class="py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto">
-        <div class="reveal">
-          <span class="text-teal-600 font-semibold text-sm tracking-widest uppercase mb-3 block text-center">Rólam</span>
-          <h2 class="font-heading text-4xl sm:text-5xl font-bold text-gray-900 text-center">Bemutatkozás</h2>
-          <p class="mt-6 text-gray-600 leading-relaxed text-lg text-center">
+        <div class="reveal text-center">
+          <span class="text-gold-500 text-xs tracking-[0.2em] uppercase font-semibold">Rólam</span>
+          <h2 class="font-heading text-4xl sm:text-5xl font-semibold text-navy-900 mt-4">Bemutatkozás</h2>
+          <div class="w-10 h-[2px] bg-gradient-to-r from-gold-500 to-gold-300 mx-auto mt-5"></div>
+          <p class="mt-6 text-navy-700/55 leading-relaxed text-lg">
             Vágó Eszter vagyok, diplomás gyógytornász, McKenzie-terapeuta. Hiszek abban, hogy a legjobb kezelés az, amit megtanulsz magadnak elvégezni.
           </p>
-          <p class="mt-4 text-gray-500 leading-relaxed text-center">
+          <p class="mt-4 text-navy-700/45 leading-relaxed">
             A McKenzie-módszer (MDT) lényege, hogy a páciens aktív résztvevője legyen saját gyógyulásának. Nem pusztán kezellek — megtanítalak rá, hogyan kezeld magad. Célzott gyakorlatokkal és önkezelési stratégiákkal tartós eredményeket érünk el együtt.
           </p>
-          <div class="text-center mt-8">
+          <div class="mt-8">
             <a href="/rolam" class="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors">
               Tovább a bemutatkozáshoz
               <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
@@ -39,6 +39,7 @@ const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
           </div>
         </div>
       </div>
+    </div>
   </section>
 
   <ServicesSection />
@@ -47,12 +48,13 @@ const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
 
   <!-- Blog előnézet -->
   {recentPosts.length > 0 && (
-    <section class="py-24 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <span class="reveal inline-block text-teal-600 font-semibold text-sm tracking-widest uppercase mb-3">Blog</span>
-          <h2 class="reveal font-heading text-4xl sm:text-5xl font-bold text-gray-900 stagger-1">Hasznos cikkek</h2>
-          <p class="reveal mt-5 text-gray-500 text-lg stagger-2">Tippek és tanácsok az egészséges mozgásról</p>
+    <section class="py-24 lg:py-32 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="reveal text-gold-500 text-xs tracking-[0.2em] uppercase font-semibold">Blog</span>
+          <h2 class="reveal stagger-1 font-heading text-4xl sm:text-5xl font-semibold text-navy-900 mt-4">Hasznos cikkek</h2>
+          <div class="w-10 h-[2px] bg-gradient-to-r from-gold-500 to-gold-300 mx-auto mt-5"></div>
+          <p class="reveal stagger-2 mt-5 text-navy-700/50 text-lg">Tippek és tanácsok az egészséges mozgásról</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {recentPosts.map((post, i) => (
@@ -79,19 +81,75 @@ const clinicUrl = 'https://mckenzie-rendelo.netlify.app';
 
   <TestimonialSection />
 
-  <!-- CTA banner -->
-  <section class="py-24 bg-navy-900 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 30px 30px;"></div>
-    <div class="absolute top-20 right-10 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 left-10 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl"></div>
-    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="reveal font-heading text-3xl sm:text-5xl font-bold text-white">Készen áll a változásra?</h2>
-      <p class="reveal stagger-1 mt-6 text-gray-400 text-lg">Foglalja le első konzultációját a McKenzie Gyógytorna Rendelő központi rendszerén keresztül.</p>
-      <a href={`${clinicUrl}/kapcsolat#idopontfoglalas`} target="_blank" rel="noopener" class="reveal stagger-2 inline-block mt-8 bg-gold-500 hover:bg-gold-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-gold-500/25 hover:-translate-y-0.5 transition-all">
-        Időpontfoglalás
-      </a>
+  <!-- HÍRLEVÉL CTA -->
+  <section class="py-24 lg:py-32 bg-navy-950 relative overflow-hidden">
+    <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] text-teal-400 opacity-[0.04]" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="260" stroke="currentColor" stroke-width="0.5"/>
+      <circle cx="300" cy="300" r="190" stroke="currentColor" stroke-width="0.5"/>
+    </svg>
+    <div class="absolute top-10 right-[12%] w-[250px] h-[250px] bg-gold-500/[0.05] rounded-full blur-[80px]"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+
+    <div class="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="reveal">
+        <span class="text-gold-500 text-xs tracking-[0.2em] uppercase font-semibold">Hírlevél</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-semibold text-white mt-3">
+          Heti tippek a <em class="font-normal text-gold-400">fájdalommentes életért</em>
+        </h2>
+        <p class="mt-4 text-white/35 text-lg leading-relaxed">
+          Iratkozz fel a hírlevelemre, és kapj heti rendszerességgel gyakorlatokat, tartásjavítási tippeket és szakmai cikkeket.
+        </p>
+      </div>
+
+      <form class="reveal stagger-1 mt-8 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-netlify="true" name="newsletter" method="POST" id="newsletter-form">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="Email címed"
+          class="flex-1 px-5 py-3.5 bg-white/10 border border-white/20 rounded-full text-white placeholder:text-gray-500 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all"
+        />
+        <button
+          type="submit"
+          class="px-8 py-3.5 bg-gold-500 hover:bg-gold-600 text-white font-semibold rounded-full transition-all hover:shadow-lg hover:shadow-gold-500/25 whitespace-nowrap"
+        >
+          Feliratkozás
+        </button>
+      </form>
+
+      <p class="reveal stagger-2 text-xs text-white/20 mt-4">
+        Nem küldök spam-et. Bármikor leiratkozhatsz egyetlen kattintással.
+      </p>
+
+      <div id="newsletter-success" class="hidden mt-6 bg-teal-900/30 border border-teal-400/20 rounded-xl p-5 text-center">
+        <svg class="w-10 h-10 text-teal-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h4 class="font-heading text-lg font-semibold text-white">Köszönöm a feliratkozást!</h4>
+        <p class="text-teal-300/60 text-sm mt-1">Hamarosan megkapod az első hírlevelet.</p>
+      </div>
     </div>
   </section>
+
+  <script>
+    const nlForm = document.getElementById('newsletter-form') as HTMLFormElement | null;
+    const nlSuccess = document.getElementById('newsletter-success');
+
+    nlForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(nlForm);
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData as any).toString(),
+        });
+        nlForm.classList.add('hidden');
+        nlSuccess?.classList.remove('hidden');
+      } catch {
+        nlForm.submit();
+      }
+    });
+  </script>
 
   <ContactSection />
 </BaseLayout>

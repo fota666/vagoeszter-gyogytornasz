@@ -28,4 +28,5 @@ pnpm-debug.log*
 
 # audit
 AUDIT.md
-C*
+CLAUDE.md
+CLAUDE*.md
