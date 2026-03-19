@@ -8,6 +8,7 @@ const links = [
   { href: `${base}blog`, label: 'Blog' },
   { href: `${base}kapcsolat`, label: 'Kapcsolat' },
 ];
+const clinicUrl = 'https://animated-khapse-2847d2.netlify.app';
 ---
 
 <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" data-page={isHomePage ? 'home' : 'inner'}>
@@ -27,6 +28,10 @@ const links = [
             {link.label}
           </a>
         ))}
+        <span class="w-px h-5 bg-white/20 mx-1 nav-divider transition-colors duration-300"></span>
+        <a href={clinicUrl} target="_blank" rel="noopener" class="px-3 py-2 text-sm font-medium nav-muted transition-colors duration-300 rounded-lg hover:nav-link">
+          McKenzie Rendelő
+        </a>
         <a href={`${base}kapcsolat`} class="ml-2 px-5 py-2.5 bg-gold-500 hover:bg-gold-600 text-white text-sm font-semibold rounded-full transition-all hover:shadow-lg hover:shadow-gold-500/25 hover:-translate-y-0.5">
           Időpontfoglalás
         </a>
@@ -50,6 +55,11 @@ const links = [
           {link.label}
         </a>
       ))}
+      <div class="border-t border-warm-200 pt-3 mt-3">
+        <a href={clinicUrl} target="_blank" rel="noopener" class="block px-4 py-3 text-navy-700/40 hover:text-teal-700 hover:bg-teal-50 rounded-xl font-medium transition-colors">
+          McKenzie Rendelő &rarr;
+        </a>
+      </div>
       <div class="pt-3">
         <a href={`${base}kapcsolat`} class="block text-center px-6 py-3 bg-gold-500 hover:bg-gold-600 text-white font-semibold rounded-full transition-colors">
           Időpontfoglalás
