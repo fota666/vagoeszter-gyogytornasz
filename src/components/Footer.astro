@@ -1,7 +1,6 @@
 ---
 const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
-const clinicUrl = 'https://fota666.github.io/mckenzie-rendelo';
 ---
 
 <footer class="bg-navy-950 text-white/40">
@@ -10,10 +9,10 @@ const clinicUrl = 'https://fota666.github.io/mckenzie-rendelo';
       <div>
         <h3 class="font-heading text-2xl font-semibold text-white mb-2">Vágó Eszter</h3>
         <p class="text-white/30 text-sm">Gyógytornász, McKenzie-terapeuta</p>
-        <a href={clinicUrl} target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 px-3.5 py-1.5 bg-teal-600/10 border border-teal-400/15 rounded-full text-teal-400/70 text-xs font-medium hover:bg-teal-600/20 transition-colors">
+        <div class="inline-flex items-center gap-2 mt-4 px-3.5 py-1.5 bg-teal-600/10 border border-teal-400/15 rounded-full text-teal-400/70 text-xs font-medium">
           <span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span>
           McKenzie Gyógytorna Rendelő munkatársa
-        </a>
+        </div>
       </div>
       <div>
         <h4 class="font-semibold text-white mb-4">Oldalak</h4>
@@ -22,20 +21,15 @@ const clinicUrl = 'https://fota666.github.io/mckenzie-rendelo';
           <li><a href={`${base}rolam`} class="hover:text-teal-400 transition-colors">Rólam</a></li>
           <li><a href={`${base}blog`} class="hover:text-teal-400 transition-colors">Blog</a></li>
           <li><a href={`${base}kapcsolat`} class="hover:text-teal-400 transition-colors">Kapcsolat</a></li>
-          <li class="pt-2 border-t border-white/[0.06]">
-            <a href={clinicUrl} target="_blank" rel="noopener" class="hover:text-teal-400 transition-colors text-white/25">
-              McKenzie Rendelő &rarr;
-            </a>
-          </li>
         </ul>
       </div>
       <div>
         <h4 class="font-semibold text-white mb-4">Időpontfoglalás</h4>
         <p class="text-sm text-white/30 leading-relaxed">
-          Az időpontfoglalás a McKenzie Gyógytorna Rendelő központi rendszerén keresztül történik.
+          Foglaljon időpontot telefonon!
         </p>
-        <a href={`${clinicUrl}/kapcsolat#idopontfoglalas`} target="_blank" rel="noopener" class="inline-flex items-center mt-4 px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-white text-sm font-semibold rounded-full transition-all hover:shadow-lg hover:shadow-gold-500/25">
-          Foglaljon időpontot
+        <a href="tel:+36304878284" class="inline-flex items-center mt-4 px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-white text-sm font-semibold rounded-full transition-all hover:shadow-lg hover:shadow-gold-500/25">
+          (30) 487-8284
         </a>
       </div>
     </div>

@@ -22,9 +22,9 @@ const base = import.meta.env.BASE_URL;
         <!-- Badge -->
         <div class="reveal inline-flex items-center gap-3 px-5 py-2.5 border border-gold-400/20 rounded-full mb-10">
           <div class="w-1.5 h-1.5 bg-gold-400 rounded-full animate-pulse"></div>
-          <a href="https://mckenzie-rendelo.netlify.app" target="_blank" rel="noopener" class="text-gold-300/80 text-xs tracking-[0.15em] uppercase font-medium hover:text-gold-300 transition-colors">
+          <span class="text-gold-300/80 text-xs tracking-[0.15em] uppercase font-medium">
             McKenzie Gyógytorna Rendelő munkatársa
-          </a>
+          </span>
         </div>
 
         <h1 class="reveal stagger-1 font-heading text-5xl sm:text-6xl lg:text-[5.5rem] font-semibold text-white leading-[1.06]">
@@ -37,7 +37,7 @@ const base = import.meta.env.BASE_URL;
         </p>
 
         <div class="reveal stagger-3 mt-10 flex flex-col sm:flex-row gap-4">
-          <a href="https://mckenzie-rendelo.netlify.app/kapcsolat#idopontfoglalas" target="_blank" rel="noopener" class="group inline-flex items-center justify-center px-9 py-4 bg-gold-500 hover:bg-gold-600 text-white font-semibold rounded-full transition-all duration-500 hover:shadow-xl hover:shadow-gold-500/20">
+          <a href={`${base}kapcsolat`} class="group inline-flex items-center justify-center px-9 py-4 bg-gold-500 hover:bg-gold-600 text-white font-semibold rounded-full transition-all duration-500 hover:shadow-xl hover:shadow-gold-500/20">
             Időpontfoglalás
             <svg class="ml-2.5 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
-const clinicUrl = 'https://fota666.github.io/mckenzie-rendelo';
 ---
 
 <BaseLayout title="Rólam - Vágó Eszter Gyógytornász" description="Ismerje meg Vágó Esztert, diplomás gyógytornászt.">
@@ -79,12 +78,12 @@ const clinicUrl = 'https://fota666.github.io/mckenzie-rendelo';
             </div>
             <div>
               <p class="text-sm text-navy-700/40">Munkahelyem</p>
-              <a href={clinicUrl} target="_blank" rel="noopener" class="text-teal-600 font-semibold hover:text-teal-700 transition-colors">McKenzie Gyógytorna Rendelő &rarr;</a>
+              <span class="text-teal-600 font-semibold">McKenzie Gyógytorna Rendelő</span>
             </div>
           </div>
 
           <div class="pt-4">
-            <a href={`${clinicUrl}/kapcsolat#idopontfoglalas`} target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all hover:shadow-xl hover:shadow-gold-500/25 hover:-translate-y-0.5">
+            <a href={`${base}kapcsolat`} class="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all hover:shadow-xl hover:shadow-gold-500/25 hover:-translate-y-0.5">
               Foglaljon időpontot
               <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>

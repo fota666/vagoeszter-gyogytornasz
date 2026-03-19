@@ -5,8 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://fota666.github.io',
-  base: '/vagoeszter-gyogytornasz',
+  site: 'https://vagoeszter-gyogytornasz.hu',
   vite: {
     plugins: [tailwindcss()]
   }

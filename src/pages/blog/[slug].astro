@@ -18,7 +18,6 @@ const formattedDate = post.data.date.toLocaleDateString('hu-HU', {
   day: 'numeric',
 });
 const base = import.meta.env.BASE_URL;
-const clinicUrl = 'https://fota666.github.io/mckenzie-rendelo';
 ---
 
 <BaseLayout title={`${post.data.title} - Vágó Eszter`} description={post.data.description}>
@@ -49,7 +48,7 @@ const clinicUrl = 'https://fota666.github.io/mckenzie-rendelo';
       </div>
 
       <div class="mt-12 pt-8 border-t border-warm-200">
-        <a href={`${clinicUrl}/kapcsolat#idopontfoglalas`} target="_blank" rel="noopener" class="inline-flex items-center bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-full font-semibold transition-all hover:shadow-lg hover:shadow-gold-500/25 hover:-translate-y-0.5">
+        <a href={`${base}kapcsolat`} class="inline-flex items-center bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-full font-semibold transition-all hover:shadow-lg hover:shadow-gold-500/25 hover:-translate-y-0.5">
           Foglaljon időpontot
           <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
